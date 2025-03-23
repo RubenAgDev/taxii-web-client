@@ -1,0 +1,19 @@
+[project]
+name = "taxii-web-client"
+version = "0.1.0"
+description = "Web proxy for the TAXII server"
+authors = [
+    {name = "Ruben Aguilar",email = "rube.a87@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "flask (>=3.1.0,<4.0.0)",
+    "flask-cors (>=5.0.1,<6.0.0)",
+    "taxii2-client (>=2.3.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
