@@ -3,7 +3,7 @@ name = "taxii-web-client"
 version = "0.1.0"
 description = "Web proxy for the TAXII server"
 authors = [
-    {name = "Ruben Aguilar",email = "rube.a87@gmail.com"}
+    {name = "Ruben Aguilar"}
 ]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
