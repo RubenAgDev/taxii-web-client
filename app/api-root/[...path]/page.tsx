@@ -17,21 +17,15 @@ export default function ApiRootPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [apiRootUrl, setApiRootUrl] = useState<string | null>(null)
 
-  // Reconstruct the API root path from the URL params
-  const apiRootPath = Array.isArray(params.path) ? `/${params.path.join("/")}` : ""
-
   useEffect(() => {
-    const serverData = sessionStorage.getItem("taxiiServer")
-    if (!serverData) {
+    const selectedApiRoot = sessionStorage.getItem("selectedApiRoot")
+    if (!selectedApiRoot) {
       router.push("/")
       return
     }
 
     try {
-      const { url } = JSON.parse(serverData)
-      // Construct the full API root URL
-      const fullApiRootUrl = new URL(`/taxii${apiRootPath}`, url).toString()
-      setApiRootUrl(fullApiRootUrl)
+      setApiRootUrl(selectedApiRoot)
       setIsLoading(false)
     } catch (error) {
       console.error("Error processing API root URL:", error)
@@ -42,7 +36,7 @@ export default function ApiRootPage() {
       })
       router.push("/dashboard")
     }
-  }, [apiRootPath, router, toast])
+  }, [router, toast])
 
   if (isLoading) {
     return (

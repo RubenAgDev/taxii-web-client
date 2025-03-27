@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
 
     // Normalize the server URL
     const normalizedUrl = serverUrl.endsWith("/") ? serverUrl : `${serverUrl}/`
-
+    const discoveryUrl = new URL("taxii/", normalizedUrl).toString()
     // Set up headers
     const headers = new Headers(taxiiHeaders)
 
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Make the request to the TAXII server
-    const response = await fetch(normalizedUrl, {
+    const response = await fetch(discoveryUrl, {
       method: "GET",
       headers,
     })
